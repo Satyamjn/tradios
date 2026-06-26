@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRADIOS — Find Trusted Tradespeople Near You</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/index-DulRxGuK.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B_6UtYLL.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      function showPage(id) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".nav-link")
+          .forEach((l) => l.classList.remove("active"));
+        document.getElementById("page-" + id).classList.add("active");
+        document.getElementById("nl-" + id).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }
+
+      const APP_URLS = {
+        homeownerPost: "https://app.tradios.co.uk/post-job",
+        tradeSignup: "https://app.tradios.co.uk/signup",
+        tradeSignupSolo: "https://app.tradios.co.uk/signup?plan=solo",
+        tradeSignupPro: "https://app.tradios.co.uk/signup?plan=pro",
+        tradeSignupEnt: "https://app.tradios.co.uk/signup?plan=enterprise",
+        signIn: "https://app.tradios.co.uk/signin",
+        iosStore:
+          "https://apps.apple.com/gb/app/tradios/id[UPDATE-BEFORE-LAUNCH]",
+        androidStore:
+          "https://play.google.com/store/apps/details?id=co.tradios.app",
+      };
+    </script>
+
+    <script>
+(function(){
+  var si=document.querySelector('#page-find input[type=text]');
+  if(!si) return;
+  si.addEventListener('input',function(){
+    var q=this.value.toLowerCase().trim();
+    var cards=document.querySelectorAll('#page-find .city-card');
+    var rows=document.querySelectorAll('#page-find .trade-row');
+    var pops=document.querySelectorAll('#page-find .popular-link');
+    var c=0,t=0;
+    cards.forEach(function(el){var m=!q||el.dataset.search&&el.dataset.search.includes(q)||(el.querySelector('.cc-name')&&el.querySelector('.cc-name').textContent.toLowerCase().includes(q));el.classList.toggle('hidden',!m);if(m)c++;});
+    rows.forEach(function(el){var m=!q||el.dataset.search&&el.dataset.search.includes(q)||(el.querySelector('.tr-name')&&el.querySelector('.tr-name').textContent.toLowerCase().includes(q));el.classList.toggle('hidden',!m);if(m)t++;});
+    pops.forEach(function(el){var m=!q||el.dataset.search&&el.dataset.search.includes(q);el.classList.toggle('hidden',!m);});
+    var nr1=document.querySelector('#page-find #cityNoResults');
+    var nr2=document.querySelector('#page-find #tradeNoResults');
+    var sc=document.querySelector('#page-find #searchCount');
+    var cc=document.querySelector('#page-find #cityCount');
+    var tc=document.querySelector('#page-find #tradeCount');
+    if(nr1)nr1.classList.toggle('show',c===0&&!!q);
+    if(nr2)nr2.classList.toggle('show',t===0&&!!q);
+    if(sc)sc.textContent=q?(c+t)+' matches for "'+q+'"':'400 pages across 20 cities and 20 trades';
+    if(cc)cc.textContent=q?c+' cities':'20 cities';
+    if(tc)tc.textContent=q?t+' trades':'20 trades';
+  });
+})();
+</script>
+  </body>
+</html>
